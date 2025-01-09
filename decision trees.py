@@ -1,7 +1,8 @@
 #root node>sub node>decision node>leaf node, prone to overfitting,    gini impurity#
 #Ensemble methods leverage the wisdom of crowds by combining multiple models, which generally leads to better prediction accuracy and reduced overfitting compared to a single decision tree.
 #Hyperparameter tuning is crucial for both individual trees and ensembles to balance between underfitting and overfitting.
-#Cross-validation should be used to ensure the robustness of the chosen parameters across different data samples#
+#Cross-validation should be used to ensure the robustness of the chosen parameters across different data samples
+#used for both regression and classification tasks##
 
 
 # Import necessary libraries
@@ -97,5 +98,9 @@ print('Accuracy of Optimized Decision Tree on Test Data:', accuracy_score(y_test
 print('Confusion Matrix - Train:\n', confusion_matrix(y_train, y_pred_best_train))
 print('\nConfusion Matrix - Test:\n', confusion_matrix(y_test, y_pred_best_test))
 
+
+
 # Print classification report for the optimized model on test data
 print('Classification Report for Optimized Model on Test Data:\n', classification_report(y_test, y_pred_best_test))
+#Uses statistical methods for feature selection implicitly within the DecisionTreeClassifier for constructing the tree, but this process isn't directly shown or manipulated in the code.
+#Performs hyperparameter tuning which indirectly affects which features might be selected for splits at different level#
