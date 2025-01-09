@@ -20,7 +20,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
 # Reading Dataset, and changing the file read location to the location of the dataset
-df = pd.read_csv(r'C:\CODING\datasets\bottle.csv')
+df = pd.read_csv(r'path to bottle.csv')
 df_binary = df[['Salnty', 'T_degC']]
 
 # Taking only the selected two attributes from the dataset
