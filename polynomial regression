@@ -1,3 +1,18 @@
+# Polynomial Regression is a type of linear regression in which the relationship
+# between the independent variable x and the dependent variable y is described
+# as an nth degree polynomial. This type of regression is also known as
+# "extended" linear regression. Polynomial regression is used to model a
+# nonlinear relationship between the value of an independent variable x and the
+# conditional mean of a dependent variable y. This relationship is represented
+# by the notation E(y | x). This is solely a result of the non-linear relationship
+# that exists between the dependent and independent variables. When we want to
+# transform linear regression into polynomial regression, we just add some
+# polynomial terms.
+
+
+# for outputs of this algo please go to https://github.com/Torajabu/Standard-ML-Algorithms---Python/tree/main/polynomial%20regression%20%20output
+
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
