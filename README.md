@@ -35,7 +35,7 @@ This repository provides a collection of Python scripts that demonstrate the imp
 - **K-Means Clustering:** An algorithm used for partitioning data into k clusters.
 
 ## Repository Structure
-The repository includes the following files:
+The repository includes the following files and folders:
 - apriori algorithm1st
 - k means clustering results
 - linear regression dataset and output
