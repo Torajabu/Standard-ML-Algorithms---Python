@@ -1,7 +1,7 @@
 # Support Vector Machines
 
 # Step 1: Import the necessary libraries.
-# Step 2: Ensure the dataset is loaded.
+# Step 2: Ensure the dataset(Iris dataset used here) is loaded.
 # Step 3: Divide the dataset into feature variables (X) and target variable (Y).
 # Step 4: Split the X and Y datasets into a Training set and a Test set.
 # Step 5: Scale the features to standardize the data.
@@ -9,48 +9,65 @@
 # Step 7: Make predictions on the Test set.
 # Step 8: Construct the Confusion Matrix to evaluate the model.
 
+# SUPPORT VECTOR MACHINES
 
-# Importing Libraries
-import matplotlib.pyplot as plt
+# Support Vector Machines
+
+# Step 1: Import the necessary libraries.
 import numpy as np
-from sklearn import svm
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
-# Linear data
-X = np.array([1, 5, 1.5, 8, 1, 9, 7, 8.7, 2.3, 5.5, 7.7, 6.1])
-y = np.array([2, 8, 1.8, 8, 8.6, 11, 10, 9.4, 4, 3, 8.8, 7.5])
+# Step 2: Load a dataset (using Iris dataset as an example).
+dataset = datasets.load_iris()
+X = dataset.data[:, :2]  # Taking only the first two features for simplicity
+Y = dataset.target
 
-# Show unclassified data
-plt.scatter(X, y)
+# Step 3: Divide the dataset into feature variables (X) and target variable (Y).
+# Already done above with X and Y.
+
+# Step 4: Split the X and Y datasets into a Training set and a Test set.
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3, random_state=42)
+
+# Step 5: Scale the features to standardize the data.
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Step 6: Fit the Support Vector Machine (SVM) model to the Training set.
+clf = SVC(kernel='linear', C=1.0, random_state=42)
+clf.fit(X_train, Y_train)
+
+# Step 7: Make predictions on the Test set.
+Y_pred = clf.predict(X_test)
+
+# Step 8: Construct the Confusion Matrix to evaluate the model.
+conf_matrix = confusion_matrix(Y_test, Y_pred)
+disp = ConfusionMatrixDisplay(confusion_matrix=conf_matrix, display_labels=dataset.target_names)
+disp.plot()
+plt.title("Confusion Matrix")
 plt.show()
 
-# Shaping data for training the model
-training_X = np.vstack((X, y)).T
-training_y = [0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1]
+# Optional: Visualizing the decision boundary (only valid for 2D features).
+def plot_decision_boundary(X, Y, model, title):
+    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.01),
+                         np.arange(y_min, y_max, 0.01))
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
 
-# Define the model
-clf = svm.SVC(kernel='linear', C=4.0)
+    plt.contourf(xx, yy, Z, alpha=0.8, cmap='coolwarm')
+    plt.scatter(X[:, 0], X[:, 1], c=Y, edgecolor='k', cmap='coolwarm')
+    plt.title(title)
+    plt.show()
 
-# Train the model
-clf.fit(training_X, training_y)
+# Visualize decision boundary for training data.
+plot_decision_boundary(X_train, Y_train, clf, "Decision Boundary (Training Data)")
 
-# Get the weight values for the linear equation from the trained SVM model
-w = clf.coef_[0]
-
-# Get the y-offset for the linear equation
-a = -w[0] / w[1]
-
-# Make the x-axis space for the data points
-XX = np.linspace(0, 13)
-
-# Get the y-values to plot the decision boundary
-yy = a * XX + clf.intercept_[0] / w[1]
-
-# Plot the decision boundary
-plt.plot(XX, yy, 'k-')
-
-# Show the plot visually
-plt.scatter(training_X[:, 0], training_X[:, 1], c=training_y)
-plt.legend()
-plt.show()
 
 #OUTPUT IS IN SVM OUTPUT FOLDER
