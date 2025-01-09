@@ -1,0 +1,56 @@
+# Support Vector Machines
+
+# Step 1: Import the necessary libraries.
+# Step 2: Ensure the dataset is loaded.
+# Step 3: Divide the dataset into feature variables (X) and target variable (Y).
+# Step 4: Split the X and Y datasets into a Training set and a Test set.
+# Step 5: Scale the features to standardize the data.
+# Step 6: Fit the Support Vector Machine (SVM) model to the Training set.
+# Step 7: Make predictions on the Test set.
+# Step 8: Construct the Confusion Matrix to evaluate the model.
+
+
+# Importing Libraries
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import svm
+
+# Linear data
+X = np.array([1, 5, 1.5, 8, 1, 9, 7, 8.7, 2.3, 5.5, 7.7, 6.1])
+y = np.array([2, 8, 1.8, 8, 8.6, 11, 10, 9.4, 4, 3, 8.8, 7.5])
+
+# Show unclassified data
+plt.scatter(X, y)
+plt.show()
+
+# Shaping data for training the model
+training_X = np.vstack((X, y)).T
+training_y = [0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1]
+
+# Define the model
+clf = svm.SVC(kernel='linear', C=4.0)
+
+# Train the model
+clf.fit(training_X, training_y)
+
+# Get the weight values for the linear equation from the trained SVM model
+w = clf.coef_[0]
+
+# Get the y-offset for the linear equation
+a = -w[0] / w[1]
+
+# Make the x-axis space for the data points
+XX = np.linspace(0, 13)
+
+# Get the y-values to plot the decision boundary
+yy = a * XX + clf.intercept_[0] / w[1]
+
+# Plot the decision boundary
+plt.plot(XX, yy, 'k-')
+
+# Show the plot visually
+plt.scatter(training_X[:, 0], training_X[:, 1], c=training_y)
+plt.legend()
+plt.show()
+
+#OUTPUT IS IN SVM OUTPUT FOLDER
