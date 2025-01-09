@@ -1,6 +1,6 @@
 # Standard ML Algorithms - Python
 
-This repository contains Python implementations of various standard machine learning algorithms. These implementations utilize libraries such as Scikit-learn, Matplotlib, and NumPy.
+This repository contains my local Python implementations of various standard machine learning algorithms. These implementations utilize libraries such as Scikit-learn, Matplotlib, and NumPy.
 
 ## About
 This repository provides a collection of Python scripts that demonstrate the implementation of machine learning algorithms. The algorithms are implemented using various Python libraries.
