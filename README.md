@@ -5,7 +5,7 @@ This repository contains Python implementations of various standard machine lear
 ## About
 This repository provides a collection of Python scripts that demonstrate the implementation of machine learning algorithms. The algorithms are implemented using various Python libraries.
 
-**Note:** The theoretical aspects of these algorithms are covered in the respective units of a machine learning course, specifically Blocks 3 and 4.
+**Note:** I have also attached the results of running most of these algorithms locally
 
 ## Algorithms Included
 
