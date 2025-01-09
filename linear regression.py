@@ -10,6 +10,8 @@
 
 
 # LINEAR REGRESSION
+#for the dataset used here, please check https://www.kaggle.com/datasets/dftow001/bottle-csv
+#for the outputs, check https://github.com/Torajabu/Standard-ML-Algorithms---Python/tree/main/linear%20regression%20dataset%20and%20output
 
 # Importing Libraries
 import numpy as np
